@@ -31,6 +31,7 @@ function createGrid() {
     createBox();
   }
   createColor(colors);
+  createRandomizer();
   loadEventListeners();
 }
 
@@ -40,14 +41,16 @@ function createBox() {
   grid.appendChild(div);
 }
 
-function loadEventListeners() {
+function addEventListenrToBoxes() {
   const boxes = document.querySelectorAll(".box");
   boxes.forEach((box) => {
     box.addEventListener("click", () => {
       box.style.backgroundColor = `${currentColor}`;
     });
   });
+}
 
+function addEventListenerToColors() {
   const colorItems = document.querySelectorAll(".colorPicker");
   colorItems.forEach((elem) => {
     elem.addEventListener("click", () => {
@@ -55,6 +58,32 @@ function loadEventListeners() {
       console.log(currentColor);
     });
   });
+}
+
+function loadEventListeners() {
+  addEventListenrToBoxes();
+  addEventListenerToColors();
+  addEventListenerToRandomizer();
+}
+
+function addEventListenerToRandomizer() {
+  const randomizer = document.querySelector("#randomizer");
+  const boxes = document.querySelectorAll(".box");
+  randomizer.addEventListener("click", () => {
+    boxes.forEach((elem) => {
+      let random = colors[Math.floor(Math.random() * colors.length)];
+      let { hex } = random;
+      elem.style.backgroundColor = hex;
+    });
+  });
+}
+
+function createRandomizer() {
+  const randomizer = document.createElement("button");
+  randomizer.classList.add("btn");
+  randomizer.textContent = "Ranomizer";
+  randomizer.id = "randomizer";
+  list.appendChild(randomizer);
 }
 
 function createColor(colors) {

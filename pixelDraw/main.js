@@ -26,13 +26,25 @@ const colors = [
 
 // Create a board
 createGrid();
+
+// Create functions
 function createGrid() {
-  for (let i = 0; i < 1612; i++) {
-    createBox();
-  }
+  createBoxes();
   createColor(colors);
   createRandomizer();
   loadEventListeners();
+}
+
+function loadEventListeners() {
+  addEventListenrToBoxes();
+  addEventListenerToColors();
+  addEventListenerToRandomizer();
+}
+
+function createBoxes() {
+  for (let i = 0; i < 1612; i++) {
+    createBox();
+  }
 }
 
 function createBox() {
@@ -58,12 +70,6 @@ function addEventListenerToColors() {
       console.log(currentColor);
     });
   });
-}
-
-function loadEventListeners() {
-  addEventListenrToBoxes();
-  addEventListenerToColors();
-  addEventListenerToRandomizer();
 }
 
 function addEventListenerToRandomizer() {

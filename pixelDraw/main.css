@@ -8,10 +8,18 @@ body {
   --backupColor: #21a0a0;
 }
 
+li {
+  list-style: none;
+}
+
 .box {
   height: 20px;
   width: 20px;
   border: 1px solid black;
+}
+
+.box:hover {
+  cursor: pointer;
 }
 
 .colorTitle {
@@ -23,11 +31,23 @@ body {
 }
 
 .container {
-  width: 95vw;
+  width: 90vw;
   margin: auto;
   display: grid;
   grid-template-columns: 1fr 8fr;
   gap: 2rem;
+}
+
+.colorPicker {
+  height: 50px;
+  width: 150px;
+  margin: 2rem 0;
+  transition: opacity 0.5s ease;
+}
+
+.colorPicker:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 #grid {
@@ -45,7 +65,9 @@ body {
 }
 
 .left {
-  border: 1px solid red;
+  border: 1px solid var(--backupColor);
+  margin-top: 5rem;
+  padding-right: 3rem;
 }
 
 #title {
